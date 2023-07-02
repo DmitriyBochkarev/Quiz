@@ -1,0 +1,31 @@
+version: '3'
+services:
+  flask_web:
+    container_name: flask_web_container
+    build: .
+    ports:
+      - 5000:5000
+    restart: always
+    depends_on:
+      - pgdb
+
+  pgdb:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    container_name: pgdb
+
+    volumes:
+      - pgdbdata:/var/lib/postgresql/data/
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  pgdbdata: null
+

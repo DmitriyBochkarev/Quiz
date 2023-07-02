@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Создание осмотра
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Новый вопрос</h1>
+        <form method="post">
+            <input type="text" name="count" id="count" class="form-control" placeholder="count"><br>
+
+          <input type="submit" class="btn btn-success" value="Создать">
+        </form>
+    </div>
+{% endblock %}
