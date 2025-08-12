@@ -21,7 +21,9 @@ class Article(db.Model):
 
     def __repr__(self):
         return '<Article %r>' % self.id
-
+# Создание таблиц
+with app.app_context():
+    db.create_all()
 
 @app.route('/')
 @app.route('/home')
