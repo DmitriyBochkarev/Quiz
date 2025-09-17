@@ -5,6 +5,9 @@ services:
     build: .
     ports:
       - 5000:5000
+    volumes:
+      - .:/app
+      - ./static/css:/app/static/css
     restart: always
     depends_on:
       - pgdb
@@ -24,7 +27,7 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 8082:8080
 
 volumes:
   pgdbdata: null

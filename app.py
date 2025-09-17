@@ -25,19 +25,19 @@ class Article(db.Model):
 with app.app_context():
     db.create_all()
 
-@app.route('/')
-@app.route('/home')
+@app.route('/quiz')
+@app.route('/quiz/home')
 def index():
     return render_template("index.html")
 
 
-@app.route('/posts')
+@app.route('/quiz/posts')
 def posts():
     articles = Article.query.order_by(Article.airdate.desc()).all()
     return render_template("posts.html", articles=articles)
 
 
-@app.route('/create-article', methods=['POST', 'GET'])
+@app.route('/quiz/create-article', methods=['POST', 'GET'])
 def create_article():
     if request.method == 'POST':
         count = request.form['count']
@@ -53,7 +53,7 @@ def create_article():
         try:
             db.session.add(article)
             db.session.commit()
-            return redirect('/posts')
+            return redirect('/quiz/posts')
 
         except:
             return "При создании вопроса произошла ошибка"
